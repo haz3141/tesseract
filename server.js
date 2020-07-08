@@ -27,5 +27,10 @@ if (process.env.NODE_ENV === "production") {
 
 // Send Requests to React App
 app.get("*", function (req, res) {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-  });
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+});
+
+// Start Express Server
+app.listen(PORT, function () {
+  console.log(`🌎Server is running on: ${PORT}🌎`);
+});
