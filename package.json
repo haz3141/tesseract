@@ -1,0 +1,19 @@
+{
+  "name": "tesseract",
+  "version": "1.0.0",
+  "description": "Tesseract Alpha",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haz3141/tesseract.git"
+  },
+  "author": "haz3141",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haz3141/tesseract/issues"
+  },
+  "homepage": "https://github.com/haz3141/tesseract#readme"
+}
