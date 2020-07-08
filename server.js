@@ -7,7 +7,7 @@ const compression = require("compression");
 const path = require("path");
 
 // Set Default Port
-const port = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 
 // Instantiate Express App
 const app = express();
