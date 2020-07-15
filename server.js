@@ -21,6 +21,7 @@ const db = require("./server/database");
 const User = require("./server/models/user-model");
 const authRouter = require("./server/routes/auth-router");
 const userRouter = require("./server/routes/user-router");
+const itemRouter = require("./server/routes/item-router");
 
 // Set Default Port
 const PORT = process.env.PORT || 3001;
@@ -54,7 +55,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // Routes
 app.use("/auth", authRouter);
-app.use("/api", userRouter);
+app.use("/api", userRouter, itemRouter);
 
 // Send Requests to React App
 router.get("*", function (req, res) {
