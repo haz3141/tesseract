@@ -9,7 +9,7 @@ mongoose
   .catch((e) => {
     console.error("Connection error", e.message);
   });
-console.log("hit");
+
 const db = mongoose.connection;
 
 module.exports = db;

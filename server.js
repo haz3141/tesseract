@@ -14,10 +14,12 @@ const session = require("express-session")({
   saveUninitialized: false,
 });
 const passport = require("passport");
+const router = express.Router();
 
 // Local Imports
 const db = require("./server/database");
 const User = require("./server/models/user-model");
+const authRouter = require("./server/routes/auth-router");
 
 // Set Default Port
 const PORT = process.env.PORT || 3001;
@@ -41,16 +43,19 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Connect to Database
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-
 // Serve Static Assets
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// Connect to Database
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+
+// Routes
+app.use("/auth", authRouter);
+
 // Send Requests to React App
-app.get("*", function (req, res) {
+router.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
