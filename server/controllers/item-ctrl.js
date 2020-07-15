@@ -1,9 +1,10 @@
 const Item = require("../models/item-model");
+const User = require("../models/user-model");
 
 createItem = (req, res) => {
-  let body = req.body;
+  const body = req.body;
   body.id = req.user._id;
-  console.log(body.id);
+
   if (!body) {
     return res.status(400).json({
       success: false,
@@ -19,6 +20,10 @@ createItem = (req, res) => {
 
   item
     .save()
+    .then(() => {
+      console.log("update user");
+      return User.updateOne({ _id: body.id }, { $push: { items: item._id } });
+    })
     .then(() => {
       return res.status(201).json({
         success: true,
