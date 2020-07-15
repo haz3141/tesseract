@@ -3,23 +3,24 @@ require("dotenv").config();
 
 // Package Imports
 const express = require("express");
-const cors = require("cors");
+const router = express.Router();
+const passport = require("passport");
+const compression = require("compression");
 const logger = require("morgan");
 const helmet = require("helmet");
-const compression = require("compression");
 const path = require("path");
+const cors = require("cors");
 const session = require("express-session")({
   secret: "secret",
   resave: false,
   saveUninitialized: false,
 });
-const passport = require("passport");
-const router = express.Router();
 
 // Local Imports
 const db = require("./server/database");
 const User = require("./server/models/user-model");
 const authRouter = require("./server/routes/auth-router");
+const userRouter = require("./server/routes/user-router");
 
 // Set Default Port
 const PORT = process.env.PORT || 3001;
@@ -53,6 +54,7 @@ db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // Routes
 app.use("/auth", authRouter);
+app.use("/api", userRouter);
 
 // Send Requests to React App
 router.get("*", function (req, res) {

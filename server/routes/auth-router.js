@@ -36,4 +36,6 @@ router.get("/user", connectEnsureLogin.ensureLoggedIn(), (req, res) =>
   res.send({ user: req.user })
 );
 
+router.get("/logout", (req, res) => req.logOut());
+
 module.exports = router;
