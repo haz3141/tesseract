@@ -2,8 +2,16 @@
   "name": "tesseract",
   "version": "1.0.0",
   "description": "Tesseract Alpha",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node scripts/seedDB.js",
+    "install": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,6 +24,10 @@
     "url": "https://github.com/haz3141/tesseract/issues"
   },
   "homepage": "https://github.com/haz3141/tesseract#readme",
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^1.18.7"
+  },
   "dependencies": {
     "compression": "^1.7.4",
     "connect-ensure-login": "^0.1.1",

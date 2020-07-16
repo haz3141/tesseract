@@ -11,7 +11,7 @@ const helmet = require("helmet");
 const path = require("path");
 const cors = require("cors");
 const session = require("express-session")({
-  secret: "secret",
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false,
 });

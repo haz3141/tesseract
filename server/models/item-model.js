@@ -9,7 +9,6 @@ const Item = new Schema(
     price: { type: String, required: false },
     description: { type: String, required: false },
     userId: { type: String, required: false },
-
   },
   { timestamps: true }
 );

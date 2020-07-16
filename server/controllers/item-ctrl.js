@@ -3,7 +3,7 @@ const User = require("../models/user-model");
 
 createItem = (req, res) => {
   const body = req.body;
-  body.id = req.user._id;
+  body.id = body.userId = req.user._id;
 
   if (!body) {
     return res.status(400).json({
