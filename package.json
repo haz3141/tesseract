@@ -24,21 +24,22 @@
     "url": "https://github.com/haz3141/tesseract/issues"
   },
   "homepage": "https://github.com/haz3141/tesseract#readme",
-  "devDependencies": {
-    "concurrently": "^5.2.0",
-    "nodemon": "^1.18.7"
-  },
   "dependencies": {
     "compression": "^1.7.4",
     "connect-ensure-login": "^0.1.1",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "express-fileupload": "^1.1.7-alpha.4",
     "express-session": "^1.17.1",
     "helmet": "^3.23.3",
     "mongoose": "^5.9.24",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local-mongoose": "^6.0.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
   }
 }
