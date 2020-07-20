@@ -12,11 +12,12 @@ const FileUpload = () => {
   };
 
   const onSubmit = async (e) => {
-    e.preventDefault();
     const formData = new FormData();
     formData.append("file", file);
 
     try {
+      e.preventDefault();
+
       const res = await axios.post("/api/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -25,6 +26,7 @@ const FileUpload = () => {
 
       const { fileName, filePath } = res.data;
       setUploadedFile({ fileName, filePath });
+
     } catch (err) {
       if (err.response.status === 500) {
         console.log("There was a problem with the server");
@@ -55,14 +57,14 @@ const FileUpload = () => {
           className="btn btn-primary btn-block mt4"
         />
       </form>
-      {uploadedFile ? (
+      {uploadedFile && (
         <div className="row mt-5">
           <div className="col-md-6 m-auto">
             <h3 className="text-center">{uploadedFile.fileName}</h3>
             <img style={{ width: "100%" }} src={uploadedFile.filePath} alt="" />
           </div>
         </div>
-      ) : null}
+      )}
     </Fragment>
   );
 };
