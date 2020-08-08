@@ -4,7 +4,7 @@ const express = require("express");
 // Set Default Port
 const PORT = process.env.PORT || 3001;
 
-// Instantiate Express App
+// Instantiate Express
 const app = express();
 
 // Set Express Middleware
