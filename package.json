@@ -25,7 +25,10 @@
   },
   "homepage": "https://github.com/haz3141/tesseract#readme",
   "dependencies": {
+    "express": "^4.17.1"
   },
   "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
   }
 }
