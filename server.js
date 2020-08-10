@@ -1,5 +1,6 @@
 // Package Imports
-const express = require("express");
+const express = require('express');
+const path = require('path');
 
 // Set Default Port
 const PORT = process.env.PORT || 3001;
@@ -11,7 +12,12 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Send Requests to React App
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client/build/index.html'));
+});
+
 // Start Express Server
-app.listen(PORT, function () {
+app.listen(PORT, () => {
   console.log(`🌎Server is running on: ${PORT}🌎`);
 });
